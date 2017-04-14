@@ -43,6 +43,28 @@ router.get('/blogpluscomments/:id', (req, res) => {
     })
 })
 
+// router.get('/allblogsallcomments', (req, res) => {
+//   var allBlogHolder = []
+//   var allCommentHolder = []
+//   knex('blogs')
+//     .then(result => {
+//       allBlogHolder = result
+//       for (var i = 0; i < result.length; i++) {
+//         allCommentHolder.push(knex('comments').where('blog_id', result[i].id))
+//       }
+//       Promise.all([Promise.all(allCommentHolder), allBlogHolder])
+//         .then(everyThing => {
+//           res.send(everyThing)
+//         })
+//         .catch(error2 => {
+//           res.send(error2)
+//         })
+//     })
+//     .catch(error => {
+//       res.send(error)
+//     })
+// })
+
 router.post('/new', (req, res) =>{
   var newAuthor = req.body.author
   var newBody = req.body.body
