@@ -5,7 +5,7 @@ const PORT = process.env.PORT || 3000
 const routesVar = requrie('./routes/blogroutes.js')
 
 app.use(bodyParser.json())
-app.use(bodyParser.Urlencoded({extended:true}))
+app.use(bodyParser.urlencoded({extended:true}))
 
 app.use('/api', routesVar)
 
