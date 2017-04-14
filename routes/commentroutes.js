@@ -1,8 +1,9 @@
 const router = require('express').Router()
 const knex =  require('../db/knex.js')
 
+
 router.get('/', (req, res) => {
-  knex('blogs')
+  knex('comments')
     .then(result => {
       res.send(result)
     })
