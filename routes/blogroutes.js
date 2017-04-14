@@ -22,6 +22,27 @@ router.get('/:id', (req, res) => {
     })
 })
 
+router.get('/blogpluscomments/:id', (req, res) => {
+  var allId = req.params.id
+  var blogHolder = []
+  knex('blogs').where('id', allId)
+    .then(result => {
+      blogHolder = result
+      knex('comments').where('blog_id', allId)
+        .then(commentsResult => {
+          blogHolder.push(commentsResult)
+          Promise.all(blogHolder)
+          res.send(blogHolder)
+        })
+        .catch(commentsError => {
+          res.send(commentsError)
+        })
+    })
+    .catch(error => {
+      res.send(error)
+    })
+})
+
 router.post('/new', (req, res) =>{
   var newAuthor = req.body.author
   var newBody = req.body.body
